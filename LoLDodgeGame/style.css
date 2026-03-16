@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    /* YENİ EKLENEN HARİTA KODLARI */
+    background-image: url('./assets/map.jpg');
+    background-size: cover; /* Ekrana tam sığdır */
+    background-position: center; /* Ortalayarak koy */
+}
+
+canvas {
+    display: block;
+}
+/* Arayüz Konteyneri */
+#ui-container {
+    position: absolute; /* Canvas'ın üzerine bindirir */
+    bottom: 30px; /* Ekranın altından 30px yukarıda */
+    left: 50%;
+    transform: translateX(-50%); /* Tam ortaya ortalar */
+    display: flex;
+    gap: 15px; /* Kutular arası boşluk */
+    pointer-events: none; /* ÇOK ÖNEMLİ: Kutuya sağ tıklarsan oyunun algılamasını sağlar, tıklamayı engellemez */
+}
+
+/* Yetenek Kutuları */
+.skill-box {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 2px solid #a38d26; /* LoL tarzı altın sarısı kenarlık */
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Q ve E Harfleri */
+.skill-key {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+/* Bekleme Süresi Metni */
+.skill-cd {
+    z-index: 2;
+}
+
+/* Bekleme Süresindeki Kutunun Görünümü (Karartma) */
+.on-cooldown {
+    border-color: #555;
+    color: #fff;
+}
+
+.on-cooldown::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Kutuyu karartır */
+    border-radius: 6px;
+}
+/* Skor Tabelası */
+#score-board {
+    position: absolute;
+    top: 20px; /* Ekranın üstünden 20px aşağıda */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Yazının arkasına gölge (okunabilirliği artırır) */
+    pointer-events: none; /* Tıklamaları engellememesi için */
+    z-index: 10;
+}
+/* Game Over Ekranı */
+#game-over-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Tam merkeze oturtur */
+    background-color: rgba(10, 10, 10, 0.95);
+    border: 3px solid #a38d26;
+    padding: 50px 80px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+    box-shadow: 0 0 30px rgba(231, 76, 60, 0.5); /* Etrafına kırmızımsı parlama */
+}
+
+#game-over-title {
+    color: #e74c3c;
+    font-size: 50px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px red;
+    letter-spacing: 5px;
+}
+
+#game-over-container p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+#final-score {
+    color: #f1c40f;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#restart-btn {
+    background-color: #a38d26;
+    color: #111;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#restart-btn:hover {
+    background-color: #f1c40f;
+    transform: scale(1.05);
+}
+/* Skor Yazısı Tasarımı */
+#scoreElement {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 60px; /* Kocaman skor */
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Yazının arkasına siyah gölge ki haritada okunsun */
+    z-index: 10;
+}
+
+/* Yetenek Kutuları (Q ve E) Tasarımı */
+.skill-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.skill-box {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(10, 10, 10, 0.8); /* Yarı saydam siyah arka plan */
+    border: 2px solid #a38d26; /* LoL Sarısı Çerçeve */
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}

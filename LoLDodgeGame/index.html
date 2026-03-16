@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Dodge Antrenmanı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="score-board">
+        Skor: <span id="score">0</span>
+    </div>
+    <div id="ui-container">
+        <div id="skill-q" class="skill-box">
+            <span class="skill-key">Q</span>
+            <span id="cd-q" class="skill-cd"></span>
+        </div>
+        <div id="skill-e" class="skill-box">
+            <span class="skill-key">E</span>
+            <span id="cd-e" class="skill-cd"></span>
+        </div>
+    </div>
+    <div id="game-over-container" style="display: none;">
+        <h1 id="game-over-title">BOZGUN</h1>
+        <p>Final Skorun: <span id="final-score">0</span></p>
+        <button id="restart-btn">YENİDEN BAŞLA</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
