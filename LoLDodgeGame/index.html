@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoL Dodge Antrenmanı</title>
+    <title>LoL Dodge Game - Mekaniklerini Geliştir!</title>
+    <meta name="description" content="League of Legends için dodge, kiting ve skillshot antrenmanı yapabileceğiniz ücretsiz web tabanlı oyun. Ezreal ile minyonlardan kaçın ve Brand Q'larını dodgelayın!">
+    <meta name="keywords" content="lol dodge game, league of legends antrenman, ezreal dodge, skillshot practice, lol mekanik geliştirme">
+    <meta property="og:title" content="LoL Dodge Game - Ezreal Dodge Antrenmanı">
+    <meta property="og:description" content="Ücretsiz web tabanlı LoL antrenman oyunu. Dodge yeteneklerini geliştir ve en yüksek skoru yap!">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
+    
+    <!-- Başlangıç Menüsü -->
+    <div id="start-menu-container">
+        <div id="start-menu-content">
+            <h1 id="game-title">LOL DODGE GAME</h1>
+            <p class="game-subtitle">Mekaniklerini Test Et ve Kendini Isındır!</p>
+            
+            <div id="control-guide">
+                <div class="control-item">
+                    <span class="control-key">Sağ Tık</span>
+                    <span class="control-desc">Hareket Et</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">Q</span>
+                    <span class="control-desc">Gizemli Atış (Skillshot)</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">E</span>
+                    <span class="control-desc">Sihirli Geçiş (Işınlanma)</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">S</span>
+                    <span class="control-desc">Duraklat (Yerinde Dur)</span>
+                </div>
+            </div>
+
+            <div id="high-score-display">
+                En Yüksek Skor: <span id="main-high-score">0</span>
+            </div>
+
+            <button id="start-btn">OYUNA BAŞLA</button>
+        </div>
+    </div>
+
+    <!-- Oyun İçi UI -->
     <div id="score-board">
         Skor: <span id="score">0</span>
+    </div>
+    <div id="difficulty-display">
+        Seviye: <span id="difficulty-level">1</span>
     </div>
     <div id="ui-container">
         <div id="skill-q" class="skill-box">
@@ -21,11 +68,17 @@
             <span id="cd-e" class="skill-cd"></span>
         </div>
     </div>
+
+    <!-- Game Over Ekranı -->
     <div id="game-over-container" style="display: none;">
         <h1 id="game-over-title">BOZGUN</h1>
         <p>Final Skorun: <span id="final-score">0</span></p>
+        <p id="high-score-record" style="color: #f1c40f; display: none;">YENİ REKOR!</p>
+        <p>En Yüksek Skor: <span id="end-high-score">0</span></p>
+        <p id="final-difficulty"></p>
         <button id="restart-btn">YENİDEN BAŞLA</button>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>
